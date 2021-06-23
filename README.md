@@ -4,24 +4,24 @@
 
 
 <p align="center">
-<a href="https://github.com/sabesansathananthan/React-GitHub-Resume">
+<a href="https://github.com/ajf013/github-resume">
       <img alt="Open Source Love" src="https://firstcontributions.github.io/open-source-badges/badges/open-source-v1/open-source.svg" />
-    </a><a href="https://react-github-resume.vercel.app/">
-      <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/sabesansathananthan/React-GitHub-Resume?color=ff69b4" />
-    </a><a href="https://react-github-resume.vercel.app/">
-      <img alt="Website" src="https://img.shields.io/website?down_color=critical&up_color=blueviolet&url=https%3A%2F%2Freact-github-resume.vercel.app%2F" />
-    </a><a href="https://github.com/sabesansathananthan/React-GitHub-Resume">
-      <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/sabesansathananthan/React-GitHub-Resume" />
-    </a><a href="https://github.com/sabesansathananthan/React-GitHub-Resume/search?l=JavaScript&type=code">
-      <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/sabesansathananthan/React-GitHub-Resume?color=yellow" />
-    </a><a href="https://github.com/sabesansathananthan/React-GitHub-Resume/tree/master/src">
-      <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/sabesansathananthan/React-GitHub-Resume?color=lightgrey" />
-    </a><a href="https://github.com/sabesansathananthan/React-GitHub-Resume">
-      <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/sabesansathananthan/React-GitHub-Resume?color=orange" />
-    </a><a href="https://github.com/sabesansathananthan/React-GitHub-Resume/deployments">
-      <img alt="GitHub deployments" src="https://img.shields.io/github/deployments/sabesansathananthan/React-GitHub-Resume/Production" />
+    </a><a href="https://githubresumeapp.netlify.app/">
+      <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/ajf013/githubresume?color=ff69b4" />
+    </a><a href="https://githubresumeapp.netlify.app/">
+      <img alt="Website" src="https://img.shields.io/website?down_color=critical&up_color=blueviolet&url=https%3A%2F%2Fgithubresumeapp.netlify.app%2F" />
+    </a><a href="https://github.com/ajf013/github-resume">
+      <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/ajf013/github-resume" />
+    </a><a href="https://github.com/ajf013/github-resume/search?l=JavaScript&type=code">
+      <img alt="GitHub top language" src="https://img.shields.io/github/languages/top//github-resume?color=yellow" />
+    </a><a href="https://github.com/ajf013/github-resume/tree/master/src">
+      <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/ajf013/github-resume?color=lightgrey" />
+    </a><a href="https://github.com/ajf013/github-resume">
+      <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ajf013/github-resume?color=orange" />
+    </a><a href="https://github.com/ajf013/github-resume/deployments">
+      <img alt="GitHub deployments" src="https://img.shields.io/github/deployments/ajf013/github-resume/Production" />
     </a><a href="./LICENSE">
-      <img alt="GitHub" src="https://img.shields.io/github/license/sabesansathananthan/React-GitHub-Resume?color=9cf" />
+      <img alt="GitHub" src="https://img.shields.io/github/license/ajf013/github-resume?color=9cf" />
     </a>
 </p>
 
@@ -78,8 +78,8 @@ To setup the app for development on your local machine, please follow the instru
 1. Clone the repo to your machine
 
 ```bash
-git clone https://github.com/sabesansathananthan/React-GitHub-Resume.git
-cd React-GitHub-Resume
+git clone https://github.com/ajf013/github-resume.git
+cd github-resume
 ```
 
 2. Install packages
@@ -116,9 +116,9 @@ cd React-GitHub-Resume
 
 4. Visit <http://localhost:3000>
 
-<h2 id='live-demo'><a href="https://react-github-resume.vercel.app/">Live Demo</a></h2>
+<h2 id='live-demo'><a href="https://githubresumeapp.netlify.app/">Live Demo</a></h2>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/sabesansathananthan/React-GitHub-Resume)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cf16be90-96f3-42fd-a269-380240c30abf/deploy-status)](https://app.netlify.com/sites/githubresumeapp/deploys)
 
 ## 📄 License
 

@@ -23,20 +23,20 @@ const Footer = () => {
       style={{ flexDirection: "column" }}
     >
       <Typography variant="h5" align="center">
-        Created with care by{" "}
+        Created with 💙 by{" "}
         <a
-          href="https://github.com/sabesansathananthan/React-GitHub-Resume"
+          href="https://github.com/ajf013/github-resume"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "#29b6f6", textDecoration: "none" }}
         >
-          Sabesan Sathananthan
+          AJF013
         </a>
       </Typography>
       <Typography variant="body1" className="description" align="center">
         If you like this project don't forget to give{" "}
         <a
-          href="https://github.com/sabesansathananthan/React-GitHub-Resume"
+          href="https://github.com/ajf013/gitHub-resume"
           className="octicon octicon-star"
           style={{ color: "#29b6f6" }}
           target="_blank"
