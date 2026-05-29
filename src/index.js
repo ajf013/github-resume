@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "semantic-ui-css/semantic.min.css";
+import "./index.css";
 import "./i18n";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
@@ -11,7 +13,15 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorkerRegistration.register();
+// Register service worker with callbacks for update events
+serviceWorkerRegistration.register({
+  onUpdate: (registration) => {
+    const event = new CustomEvent("sw-update-available", { detail: registration });
+    window.dispatchEvent(event);
+  },
+  onSuccess: () => {
+    const event = new CustomEvent("sw-cached-offline");
+    window.dispatchEvent(event);
+  }
+});
+

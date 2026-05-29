@@ -2,59 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { RepoCard, Footer } from "./index";
-
-import { makeStyles, Grid, Avatar, Typography } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  container: {
-    maxWidth: "80%",
-    margin: "2rem auto",
-    padding: "1rem",
-    background: "white",
-    borderRadius: "10px",
-    "@media (min-width: 992px)": {
-      maxWidth: "800px",
-    },
-  },
-  avatar: {
-    borderRadius: "100%",
-    maxWidth: "150px",
-    maxHeight: "150px",
-    width: theme.spacing(30),
-    height: theme.spacing(30),
-  },
-  blockFlex: {
-    width: "80%",
-    "@media (min-width: 992px)": {
-      display: "flex",
-      justifyContent: "space-evenly",
-      alignItems: "center",
-      width: "800px",
-    },
-  },
-  blockFlexRepo: {
-    width: "80%",
-    "@media (min-width: 992px)": {
-      display: "flex",
-      justifyContent: "space-evenly",
-      flexWrap: "wrap",
-      alignItems: "flex-start",
-      width: "800px",
-    },
-  },
-  blockItem: {
-    padding: "0 1rem",
-  },
-  info: {
-    margin: "2rem 0",
-  },
-  icon: {
-    marginRight: "0.5rem",
-    color: "black",
-  },
-}));
+import { useTranslation } from "react-i18next";
 
 const UserProfile = (props) => {
+  const { t } = useTranslation();
   const { username, language } = props;
   const {
     name,
@@ -64,76 +15,94 @@ const UserProfile = (props) => {
     login,
     avatar_url,
     repositories,
+    followers,
+    following,
+    public_repos,
   } = props.data;
-  const classes = useStyles();
+
   return (
-    <React.Fragment>
-      <Grid container className={classes.container}>
-        <Link to="/" className="link--back">
-          <i
-            className={[classes.icon, "fas fa-chevron-left fa-2x"].join(" ")}
-          ></i>
+    <>
+      <div className="glass-container" style={{ position: "relative", marginBottom: "2rem" }}>
+        <Link to="/" className="header-btn link--back" style={{ position: "absolute", top: "1.5rem", left: "1.5rem", textDecoration: "none" }}>
+          <i className="fas fa-chevron-left"></i>
         </Link>
-        <Grid className={classes.blockFlex}>
-          <Grid className={classes.blockItem}>
-            <Avatar alt="avatar" src={avatar_url} className={classes.avatar} />
-          </Grid>
-          <Grid className={classes.blockItem}>
-            {name ? (
-              <Typography variant="body1" paragraph>
-                <i className={[classes.icon, "fas fa-user"].join(" ")}></i>{" "}
-                {name}
-              </Typography>
-            ) : null}
-            {login ? (
-              <Typography variant="body1" paragraph>
-                <i className={[classes.icon, "fab fa-github"].join(" ")}></i>{" "}
-                {login}
-              </Typography>
-            ) : null}
-            {bio ? (
-              <Typography variant="body1" paragraph>
-                <i className={[classes.icon, "fas fa-book"].join(" ")}></i>{" "}
-                {bio}
-              </Typography>
-            ) : null}
-            {location ? (
-              <Typography variant="body1" paragraph>
-                <i
-                  className={[classes.icon, "fas fa-map-marker-alt"].join(" ")}
-                ></i>
-                {location}
-              </Typography>
-            ) : null}
-            {company ? (
-              <Typography variant="body1" paragraph>
-                <i className={[classes.icon, "far fa-building"].join(" ")}></i>
-                {company}
-              </Typography>
-            ) : null}
-          </Grid>
-        </Grid>
-        <br />
-        <Grid className={classes.blockFlexRepo}>
-          {repositories.length > 0 ? (
-            repositories.map((repo, index) => (
-              <RepoCard item={repo} key={index} language={language} />
-            ))
-          ) : (
-            <Grid className={classes.info}>
-              <i className={[classes.icon, "fas fa-info-circle"].join(" ")}></i>
-              <span>{username} does not has any repositories</span>
-            </Grid>
-          )}
-        </Grid>
-      </Grid>
+        
+        <div className="profile-card" style={{ paddingTop: "2rem" }}>
+          <div className="profile-avatar-wrapper">
+            <img alt={`${login}'s avatar`} src={avatar_url} className="profile-avatar" />
+          </div>
+          
+          <div className="profile-info">
+            <h1 className="profile-name">{name || login}</h1>
+            <a 
+              href={`https://github.com/${login}`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="profile-username"
+            >
+              <i className="fab fa-github"></i> @{login}
+            </a>
+            
+            {bio && <p className="profile-bio">{bio}</p>}
+            
+            <div className="profile-meta-grid">
+              {location && (
+                <div className="profile-meta-item">
+                  <i className="fas fa-map-marker-alt"></i>
+                  <span>{location}</span>
+                </div>
+              )}
+              {company && (
+                <div className="profile-meta-item">
+                  <i className="far fa-building"></i>
+                  <span>{company}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Stats Summary Grid */}
+            <div className="stats-grid">
+              <div className="stat-box">
+                <div className="stat-value">{followers}</div>
+                <div className="stat-label">{t("followers")}</div>
+              </div>
+              <div className="stat-box">
+                <div className="stat-value">{public_repos}</div>
+                <div className="stat-label">{t("repositories")}</div>
+              </div>
+              <div className="stat-box">
+                <div className="stat-value">{following}</div>
+                <div className="stat-label">{t("following")}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 className="section-title">{t("featured_repos")}</h2>
+      
+      <div className="repos-grid">
+        {repositories.length > 0 ? (
+          repositories.map((repo, index) => (
+            <RepoCard item={repo} key={index} language={language} />
+          ))
+        ) : (
+          <div className="glass-container" style={{ textAlign: "center", width: "100%", padding: "2rem" }}>
+            <i className="fas fa-info-circle" style={{ fontSize: "2rem", color: "var(--accent-color)", marginBottom: "1rem" }}></i>
+            <p>{username} {t("no_repos")}</p>
+          </div>
+        )}
+      </div>
+      
       <Footer />
-    </React.Fragment>
+    </>
   );
 };
 
 UserProfile.propTypes = {
   data: PropTypes.object.isRequired,
+  username: PropTypes.string.isRequired,
+  language: PropTypes.object.isRequired,
 };
 
 export default UserProfile;

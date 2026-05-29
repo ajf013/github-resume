@@ -1,125 +1,159 @@
-<h1 align='center'>GitHub Resume Generator</h1>
-
-<img alt="React GitHub Resume" src="./src/assets/readme/screenshot.png"  align='center'/>
-
+# 📄 GitHub Resume Generator & PWA
 
 <p align="center">
-<a href="https://github.com/ajf013/github-resume">
-      <img alt="Open Source Love" src="https://firstcontributions.github.io/open-source-badges/badges/open-source-v1/open-source.svg" />
-    </a><a href="https://githubresumeapp.netlify.app/">
-      <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/ajf013/githubresume?color=ff69b4" />
-    </a><a href="https://githubresumeapp.netlify.app/">
-      <img alt="Website" src="https://img.shields.io/website?down_color=critical&up_color=blueviolet&url=https%3A%2F%2Fgithubresumeapp.netlify.app%2F" />
-    </a><a href="https://github.com/ajf013/github-resume">
-      <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/ajf013/github-resume" />
-    </a><a href="https://github.com/ajf013/github-resume/search?l=JavaScript&type=code">
-      <img alt="GitHub top language" src="https://img.shields.io/github/languages/top//github-resume?color=yellow" />
-    </a><a href="https://github.com/ajf013/github-resume/tree/master/src">
-      <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/ajf013/github-resume?color=lightgrey" />
-    </a><a href="https://github.com/ajf013/github-resume">
-      <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ajf013/github-resume?color=orange" />
-    </a><a href="https://github.com/ajf013/github-resume/deployments">
-      <img alt="GitHub deployments" src="https://img.shields.io/github/deployments/ajf013/github-resume/Production" />
-    </a><a href="./LICENSE">
-      <img alt="GitHub" src="https://img.shields.io/github/license/ajf013/github-resume?color=9cf" />
-    </a>
+  <img alt="GitHub Resume UI Mockup" src="./src/assets/readme/screenshot.png" width="80%" />
 </p>
 
+An elegant, print-ready, professional resume builder built on React. This application converts any public GitHub profile and repositories into a beautiful developer resume. It is enhanced as a fully responsive **Progressive Web App (PWA)** with a dual **Dark/Light theme**, offline capabilities, multi-language support (including **Tamil**), and visual notifications.
 
-## Table of Content
+---
 
-- [About](#about)
-- [Built with](#built-with)
-- [Installation](#installation)
-- [Demo](#live-demo)
+## ⚡ Changes & Enhancements Made
 
-<br>
+1. **Design System & Glassmorphism**: Legacies of Material-UI v4 styling components were refactored into a custom-crafted design system powered by Vanilla CSS. Features premium gradients, responsive layout metrics, custom scrollbars, and frosted-glass paneling (`backdrop-filter`).
+2. **Dark & Light Themes**: Introduced local state-theme managers with selectors, persisting choices inside `localStorage` and toggling stylesheets instantly using dataset tags on the `<body>` element.
+3. **PWA Integration & Update Prompts**: Implemented Workbox service-workers registering install callbacks and update callbacks. Designed beautiful in-app notifications prompting users to install or hard-refresh on updates.
+4. **Offline Language Colors**: Cached and embedded a local JSON database mapping languages to official GitHub hex colors (`languageColors.json`) to act as an offline fallback.
+5. **Featured Repository Capping**: Intelligently limits display output to the top 8 repositories (sorted by star count and forks) to preserve high resume readability.
+6. **Accessible Semantic UI Footer**: Introduced a custom `Footer/` module integrating Semantic UI icons, animations, and an embedded SVG for Twitter/X.
+7. **Tamil Language Integration (`தமிழ்`)**: Integrated full Tamil translations across all interface titles, search components, stats cards, and toast overlays.
 
-### 🌎 _Read in [other languages](./translations/Translations.md)_
+---
 
-<br>
+## 📂 Project Directory Structure
 
-<kbd>[<img title="French" alt="French" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/fr.svg" height="14">](./translations/README.fr.md)</kbd>
-<kbd>[<img title="Spanish" alt="Spanish" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/es.svg" height="14">](./translations/README.es.md)</kbd>
-<kbd>[<img title="German" alt="German" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/de.svg" height="14">](./translations/README.de.md)</kbd>
-<kbd>[<img title="Portuguese (Brasil)" alt="Portuguese (Brasil)" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/br.svg" height="14">](./translations/README.pt_br.md)</kbd>
-<kbd>[<img title="Polish" alt="Polish" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/pl.svg" height="14">](./translations/README.pl.md)</kbd>
-<kbd>[<img title="Ukrainian" alt="Ukrainian" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ua.svg" height="14">](./translations/README.uk.md)</kbd>
-<kbd>[<img title="Russian" alt="Russian" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/ru.svg" height="14">](./translations/README.ru.md)</kbd>
-<kbd>[<img title="Italian" alt="Italian" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/it.svg" height="14">](./translations/README.it.md)</kbd>
-<kbd>[<img title="Telugu" alt="Telugu" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/in.svg" height="14">](./translations/README.te.md)</kbd>
-<kbd>[<img title="Czech" alt="Czech" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cz.svg" height="14">](./translations/README.cs.md)</kbd>
-<kbd>[<img title="Tamil" alt="Tamil" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lk.svg" height="14">](./translations/README.ta.md)</kbd>
-<kbd>[<img title="Indonesian" alt="Indonesian" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/id.svg" height="14">](./translations/README.id.md)</kbd>
-<kbd>[<img title="Sinhala" alt="Sinhala" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/lk.svg" height="14">](./translations/README.si.md)</kbd>
-<kbd>[<img title="Bulgarian" alt="Bulgarian" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/bg.svg" height="14">](./translations/README.bg.md)</kbd>
-<kbd>[<img title="Chinese" alt="Chinese" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/cn.svg" height="14">](./translations/README.zh.md)</kbd>
-<kbd>[<img title="Turkish" alt="Turkish" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tr.svg" height="14">](./translations/README.tr.md)</kbd>
-<kbd>[<img title="Traditional Chinese" alt="Traditional Chinese" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/tw.svg" height="14">](./translations/README.zh_tw.md)</kbd>
-<kbd>[<img title="Kannada" alt="Kannada" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/in.svg" height="14">](./translations/README.kn.md)</kbd>
-<kbd>[<img title="Malay" alt="Malay" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/my.svg" height="14">](./translations/README.ms.md)</kbd>
-<kbd>[<img title="Македонски" alt="Македонски" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/mk.svg" height="14">](./translations/README.mk.md)</kbd>
-<kbd>[<img title="Nepali" alt="Nepali" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/np.svg" height="14">](./translations/README.ne.md)</kbd>    
-<br>
+```text
+github-resume/
+├── public/
+│   ├── favicon.ico             # App Favicon
+│   ├── index.html              # Document index (loads fonts & meta)
+│   ├── logo192.png             # PWA app icons (192px)
+│   ├── logo512.png             # PWA app icons (512px)
+│   ├── manifest.json           # PWA installable manifest configs
+│   └── robots.txt
+├── src/
+│   ├── assets/
+│   │   └── readme/
+│   │       └── screenshot.png  # Demo screenshot
+│   ├── components/
+│   │   ├── Footer/
+│   │   │   ├── Footer.jsx      # Social and copyright footer
+│   │   │   └── Footer.css      # Footer animations and colors
+│   │   ├── Header.js           # Theme toggle and language selector
+│   │   ├── Loader.js           # Modern gradient spinner
+│   │   ├── NotFoundPage.js     # Custom 404 user-not-found handler
+│   │   ├── RepoCard.js         # Repository details cards
+│   │   ├── SearchForm.js       # Search inputs with focus animations
+│   │   ├── UserProfile.js      # Resume summary metrics & panels
+│   │   └── index.js            # Unified export index
+│   ├── constants/
+│   │   ├── languageColors.json # Fallback language color mapping database
+│   │   └── languages.js        # Supported language list
+│   ├── App.js                  # PWA and theme listeners, routes wrapper
+│   ├── i18n.js                 # i18next multilingual setups
+│   ├── index.css               # Global stylesheet variables and base styles
+│   ├── index.js                # App boots and service worker hooker
+│   └── serviceWorkerRegistration.js # PWA service worker setups
+├── package.json
+└── yarn.lock
+```
 
-<h2 id='about'>🤔 About</h2>
+---
 
-Aim of this repository is to generate `Github Resume` for each github users.
+## 🏗️ Architecture & Component Flow
 
-<h2 id='built-with'>🛠️ Built with</h2>
+The application coordinates state flow between the Service Worker registry, local storage settings, translation frameworks, and the DOM interface:
 
-- [React JS](https://reactjs.org/) - Front-End JavaScript library
-- [Material UI](https://material-ui.com/) - React UI Framework
+```mermaid
+graph TD
+    A[User visits Localhost/Web] --> B{Service Worker Active?}
+    B -- Yes --> C[Cache assets for offline use]
+    B -- No --> D[Register Service Worker]
+    
+    A --> E{Read saved Theme & Lang}
+    E --> F[Apply Theme to body dataset]
+    E --> G[Initialize React-i18next translation]
+    
+    H[Landing View] --> I{User searches username}
+    I -- Empty --> J[Display Validation Toast]
+    I -- Valid --> K[Route to /user/:username/resume]
+    
+    K --> L[Fetch GitHub API profile details]
+    L -- Success --> M[Fetch repository list]
+    L -- Failure --> N[Redirect to 404 & Return to home after 2.5s]
+    
+    M --> O[Sort repos by stars/forks & Limit to Top 8]
+    O --> P{Read language colors}
+    P -- Heroku API OK --> Q[Load colors from Heroku]
+    P -- Heroku Down/Offline --> R[Fallback to languageColors.json]
+    
+    Q & R --> S[Render UserProfile & RepoCards]
+```
 
-<h2 id='installation'>Installation</h2>
+---
 
-To setup the app for development on your local machine, please follow the instructions below:
+## 🛠️ Technology Stack
 
-1. Clone the repo to your machine
+| Technology / Library | Logo / Badge | Version | Description |
+| :--- | :--- | :--- | :--- |
+| **React** | ![React](https://img.shields.io/badge/React-16.14.0-20232A?logo=react&logoColor=61DAFB) | `16.14.0` | Library for building UI components. |
+| **React Router** | ![React Router](https://img.shields.io/badge/Router-5.2.0-CA4245?logo=react-router&logoColor=white) | `5.2.0` | Routing engine for Single Page Navigation. |
+| **i18next** | ![i18next](https://img.shields.io/badge/i18n-19.9.2-009688?logo=internationalization&logoColor=white) | `19.9.2` | Core localization manager for language switching. |
+| **Axios** | ![Axios](https://img.shields.io/badge/Axios-0.21.1-5A29E4?logo=axios&logoColor=white) | `0.21.1` | HTTP Client for GitHub API integrations. |
+| **Semantic UI** | ![Semantic UI](https://img.shields.io/badge/Semantic_UI-2.0.3-35EDB2?logo=semantic-ui-react&logoColor=white) | `2.0.3` | Custom React social icon rendering. |
+| **Vanilla CSS** | ![CSS3](https://img.shields.io/badge/CSS3-Variables-1572B6?logo=css3&logoColor=white) | `CSS3` | Layout styling, themes, animations, & PWA toasts. |
+| **Workbox (PWA)** | ![PWA](https://img.shields.io/badge/PWA-Workbox-0052FF?logo=pwa&logoColor=white) | `Default` | Offline assets caching & update push handlers. |
 
+---
+
+## 🚀 Installation & Running Locally
+
+Ensure you have **Node.js (v18+)** installed.
+
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/ajf013/github-resume.git
 cd github-resume
 ```
 
-2. Install packages
+### 2. Install Package Dependencies
+```bash
+yarn install
+# or
+npm install
+```
 
-   If you use `npm`
+### 3. Run Development Server
+```bash
+NODE_OPTIONS=--openssl-legacy-provider yarn start
+# or
+NODE_OPTIONS=--openssl-legacy-provider npm start
+```
+*Open **[http://localhost:3000](http://localhost:3000)** in your browser.*
 
-   ```bash
-   npm install
-   ```
+### 4. Create Production Build (For PWAs / Deployment)
+```bash
+NODE_OPTIONS=--openssl-legacy-provider yarn build
+# or
+NODE_OPTIONS=--openssl-legacy-provider npm run build
+```
 
-   or
+---
 
-   If you use `yarn`
+## 👥 Author
 
-   ```bash
-   yarn
-   ```
+### 👤 Francis Ponnu Cruz I
+> **Azure Cloud & DevOps Engineer | Microsoft Certified Trainer (MCT)**
 
-3. Run the development server
+#### 🌐 Connect with Me:
+[![GitHub](https://img.shields.io/badge/GitHub-ajf013-181717?style=flat-square&logo=github)](https://github.com/ajf013)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Francis_Cruz-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/ajf013-francis-cruz/)
+[![Twitter/X](https://img.shields.io/badge/X-@Itsme__Ajf013-000000?style=flat-square&logo=x)](https://x.com/Itsme_Ajf013)
+[![Website](https://img.shields.io/badge/Website-fcruz.org-2D3748?style=flat-square&logo=googlechrome&logoColor=white)](https://fcruz.org)
+[![Linktree](https://img.shields.io/badge/Linktree-AJF013-39E09B?style=flat-square&logo=linktree&logoColor=white)](https://linktr.ee/AJF013)
 
-   If you use `npm`
-
-   ```bash
-   npm start
-   ```
-
-   or
-
-   If you use `yarn`
-
-   ```bash
-   yarn start
-   ```
-
-4. Visit <http://localhost:3000>
-
-<h2 id='live-demo'><a href="https://githubresumeapp.netlify.app/">Live Demo</a></h2>
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/cf16be90-96f3-42fd-a269-380240c30abf/deploy-status)](https://app.netlify.com/sites/githubresumeapp/deploys)
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.

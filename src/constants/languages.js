@@ -34,6 +34,11 @@ const languages = [
     "name": "Portuguese",
     "nativeName": "Português"
   },
+  {
+    "code": "ta",
+    "name": "Tamil",
+    "nativeName": "தமிழ்"
+  }
 ]
 
 export default languages;

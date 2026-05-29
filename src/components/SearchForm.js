@@ -1,92 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  FormControl,
-  makeStyles,
-  Grid,
-  TextField,
-  Button,
-  Typography,
-} from "@material-ui/core";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-  textField: {
-    margin: "1.5rem 0",
-    height: "30px",
-    width: "100%",
-    maxWidth: "300px",
-    fontSize: "0.9rem",
-  },
-  button: {
-    border: "none",
-    borderRadius: "5px",
-    color: "#fff",
-    fontWeight: "bold",
-    backgroundColor: "#29b6f6",
-    height: "36px",
-    padding: "0 1.5rem",
-    marginLeft: "0.5rem",
-  },
-  validationTypo: {
-    color: "red",
-    fontSize: "0.9rem",
-  },
-  icon: {
-    marginRight: "0.5rem",
-    color: "black",
-  },
-}));
+import { useTranslation } from "react-i18next";
 
 const SearchForm = (props) => {
-  const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
-    <Grid style={{ textAlign: "center" }}>
-      <form onSubmit={props.handleSubmit}>
-        <FormControl className="form">
-          <Grid className={classes.margin}>
-            <Grid container spacing={1} alignItems="flex-end">
-              <Grid item>
-                <AccountCircle />
-              </Grid>
-              <Grid item>
-                <TextField
-                  id="username"
-                  label="Github username"
-                  onChange={props.handleChange}
-                  placeholder="type your github username"
-                  type="text"
-                  className={classes.textField}
-                />
-              </Grid>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                onClick={props.handleSubmit}
-              >
-                Generate
-              </Button>
-            </Grid>
-          </Grid>
-          {props.validationError ? (
-            <Typography className={classes.validationTypo} variant="body1">
-              <i
-                className={[classes.icon, "fas fa-exclamation-circle"].join(
-                  " "
-                )}
-                style={{ color: "red" }}
-              ></i>
-              Username is required
-            </Typography>
-          ) : null}
-        </FormControl>
-      </form>
-    </Grid>
+    <form onSubmit={props.handleSubmit} className="search-box-form">
+      <div className="search-field-wrapper">
+        <input
+          id="username"
+          type="text"
+          onChange={props.handleChange}
+          placeholder={t("placeholder")}
+          className="search-input"
+          autoComplete="off"
+          autoFocus
+        />
+        <i className="fab fa-github"></i>
+      </div>
+      
+      <button type="submit" className="search-btn">
+        {t("generate")}
+      </button>
+
+      {props.validationError && (
+        <div className="validation-error">
+          <i className="fas fa-exclamation-circle"></i>
+          <span>{t("required")}</span>
+        </div>
+      )}
+    </form>
   );
 };
 

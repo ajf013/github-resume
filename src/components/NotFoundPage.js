@@ -1,45 +1,39 @@
-import React from "react";
-import Proptypes from "prop-types";
-import { Grid, makeStyles, Typography } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  container: {
-    maxWidth: "80%",
-    margin: "2rem auto",
-    padding: "1rem",
-    background: "white",
-    borderRadius: "10px",
-    textAlign: "center",
-    "@media (min-width: 992px)": {
-      maxWidth: "800px",
-    },
-  },
-}));
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 const NotFoundPage = (props) => {
-  const { location } = props;
+  const { location, history } = props;
+  const { t } = useTranslation();
 
-  setTimeout(() => {
-    props.history.push("/");
-  }, 1500);
-
-  const classes = useStyles();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      history.push("/");
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, [history]);
 
   return (
-    <Grid id="not-found">
-      <Grid className={classes.container}>
-        <i className="far fa-meh fa-4x"></i>
-        <Typography variant="h3">
-          404 - {location && location.state ? location.state.error : ""}
-        </Typography>
-        <br />
-      </Grid>
-    </Grid>
+    <div className="home-layout glass-container" style={{ marginTop: "6rem", padding: "3rem" }}>
+      <i className="far fa-meh fa-4x" style={{ color: "var(--accent-color)", marginBottom: "1.5rem" }}></i>
+      <h1 style={{ fontSize: "2rem", fontWeight: "800", marginBottom: "1rem" }}>
+        {t("user_not_found")}
+      </h1>
+      <p style={{ color: "var(--text-secondary)", fontSize: "1rem", lineHeight: "1.6" }}>
+        {location && location.state && location.state.error 
+          ? `Error: ${location.state.error}` 
+          : t("profile_error")}
+      </p>
+      <p style={{ color: "var(--accent-color)", fontSize: "0.9rem", marginTop: "2rem", fontWeight: "600" }}>
+        {t("redirecting")}
+      </p>
+    </div>
   );
 };
 
 NotFoundPage.propTypes = {
-  location: Proptypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default NotFoundPage;

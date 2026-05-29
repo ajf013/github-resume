@@ -1,0 +1,86 @@
+.footer_content {
+    text-align: center;
+    color: rgb(240, 156, 0);
+}
+
+.footer_main {
+    padding: 50px 20px;
+    animation: slideUp 1s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer_Icons {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer_Icons span {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.footer_Icons .footer_git a {
+    color: var(--text-primary);
+    transform: scale(1);
+    transition: 0.3s ease;
+}
+
+.footer_Icons .footer_link a {
+    color: #0077b5;
+    transform: scale(1);
+    transition: 0.3s ease;
+}
+
+.footer_Icons .footer_insta a {
+    color: #e1306c;
+    transform: scale(1);
+    transition: 0.3s ease;
+}
+
+.footer_Icons .footer_wht a {
+    color: #25d366;
+    transform: scale(1);
+    transition: 0.3s ease;
+}
+
+.footer_Icons .footer_twi a {
+    color: var(--text-primary);
+    transform: scale(1);
+    transition: 0.3s ease;
+}
+
+.footer_Icons .footer_git a:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.footer_Icons .footer_link a:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.footer_Icons .footer_insta a:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.footer_Icons .footer_wht a:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.footer_Icons .footer_twi a:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}

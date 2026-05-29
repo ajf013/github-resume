@@ -1,54 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, InputLabel, makeStyles, Select, MenuItem } from "@material-ui/core";
-
 import i18n from '../i18n';
-
 import languages from '../constants/languages';
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    maxWidth: "80%",
-    margin: "2rem auto",
-    padding: "1rem",
-    borderRadius: "10px",
-    "@media (min-width: 992px)": {
-      maxWidth: "800px",
-    },
-  },
-  languageWrapper: {
-    display: 'flex',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'flex-end'
-  },
-  languageLabel: {
-    marginRight: '8px'
-  }
-}));
-
 const Header = () => {
-  const classes = useStyles();
   const [languageCode, setLanguageCode] = useState('en');
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
 
   const handleChangeLanguage = ({ target: { value } }) => {
     setLanguageCode(value);
     i18n.changeLanguage(value);
-
-    if (
-      window
-      && window.localStorage
-    ) {
+    if (window && window.localStorage) {
       window.localStorage.setItem('REACT_GITHUB_PROFILE_LANG', value);
     }
-  }
+  };
+
+  const handleToggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    window.dispatchEvent(new CustomEvent('toggle-theme'));
+  };
 
   useEffect(() => {
-    if (
-      window
-      && window.localStorage
-    ) {
+    if (window && window.localStorage) {
       const lang = window.localStorage.getItem('REACT_GITHUB_PROFILE_LANG');
       setLanguageCode(lang || 'en');
+      const savedTheme = window.localStorage.getItem('theme');
+      if (savedTheme) {
+        setTheme(savedTheme);
+      }
     }
   }, []);
 
@@ -57,47 +36,38 @@ const Header = () => {
   }, [languageCode]);
 
   return (
-    <Grid
-      container
-      className={classes.container}
-    >
-      <Grid
-        className={classes.languageWrapper}
-      >
-        <InputLabel
-          id="demo-simple-select-label"
-          className={classes.languageLabel}
+    <header className="main-header">
+      <div className="header-controls">
+        <button 
+          onClick={handleToggleTheme} 
+          className="header-btn" 
+          aria-label="Toggle Theme"
+          title="Toggle Theme"
         >
-            Languages
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-filled-label"
+          {theme === 'dark' ? <i className="fas fa-sun"></i> : <i className="fas fa-moon"></i>}
+        </button>
+      </div>
+
+      <div className="select-wrapper">
+        <select
           id="demo-simple-select-filled"
           value={languageCode}
           onChange={handleChangeLanguage}
+          className="custom-select"
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          {
-            languages.length > 0
-            ?
-              languages.map((item, index) => {
-                return (
-                  <MenuItem
-                    key={index.toString()}
-                    value={item.code}
-                  >
-                    {item.nativeName}
-                  </MenuItem>
-                )
-              })
-            : null
-          }
-        </Select>
-      </Grid>
-    </Grid>
-  )
+          {languages.length > 0 &&
+            languages.map((item, index) => (
+              <option key={index.toString()} value={item.code}>
+                {item.nativeName}
+              </option>
+            ))}
+        </select>
+        <span className="select-icon">
+          <i className="fas fa-chevron-down"></i>
+        </span>
+      </div>
+    </header>
+  );
 };
 
 export default Header;
