@@ -1,7 +1,7 @@
 # 📄 GitHub Resume Generator & PWA
 
 <p align="center">
-  <img alt="GitHub Resume UI Mockup" src="./src/assets/readme/screenshot.png" width="80%" />
+  <img alt="GitHub Resume UI Mockup" src="src/assets/readme/screenshot.png" width="80%" />
 </p>
 
 An elegant, print-ready, professional resume builder built on React. This application converts any public GitHub profile and repositories into a beautiful developer resume. It is enhanced as a fully responsive **Progressive Web App (PWA)** with a dual **Dark/Light theme**, offline capabilities, multi-language support (including **Tamil**), and visual notifications.
